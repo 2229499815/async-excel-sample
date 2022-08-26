@@ -37,7 +37,8 @@ public class UserController {
         DataImportParam dataImportParam = new DataImportParam()
             .setStream(file.getInputStream())
             .setModel(UserImportModel.class)
-            .setBatchSize(3);
+            .setBatchSize(3)
+            .setFilename("用户导入");
         Long taskId = excelService.doImport(UserImportHandler.class, dataImportParam);
         return taskId;
     }

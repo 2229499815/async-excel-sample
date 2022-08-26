@@ -1,13 +1,12 @@
 package com.asyncexcel.sample.excel;
 
-import com.asyncexcel.core.ExportListUtil;
 import com.asyncexcel.core.ExportPage;
 import com.asyncexcel.core.annotation.ExcelHandle;
 import com.asyncexcel.core.exporter.DataExportParam;
 import com.asyncexcel.core.exporter.ExportHandler;
 import com.asyncexcel.sample.entity.User;
 import com.asyncexcel.sample.service.IUserService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.asyncexcel.sample.util.ExportListUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import java.util.List;
