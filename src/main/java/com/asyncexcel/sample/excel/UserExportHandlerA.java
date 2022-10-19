@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @Date 2022/8/26 16:03
  */
 @ExcelHandle
-public class UserExportHandler implements ExportHandler<UserExportModel> {
+public class UserExportHandlerA implements ExportHandler<UserExportModel> {
     
     @Autowired
     IUserService userService;
@@ -31,7 +31,7 @@ public class UserExportHandler implements ExportHandler<UserExportModel> {
     public void init(ExcelContext ctx) {
         ExportContext context = (ExportContext) ctx;
         //此处的sheetNo会被覆盖，为了兼容一个文件多sheet导出
-        WriteSheet sheet = EasyExcel.writerSheet(0, "第一个sheet").head(UserExportModel.class).build();
+        WriteSheet sheet = EasyExcel.writerSheet(0, "第二个sheet").head(UserExportModel.class).build();
         context.setWriteSheet(sheet);
     }
     

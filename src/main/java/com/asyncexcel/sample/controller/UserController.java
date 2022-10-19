@@ -3,6 +3,7 @@ package com.asyncexcel.sample.controller;
 import com.asyncexcel.core.exporter.DataExportParam;
 import com.asyncexcel.core.importer.DataImportParam;
 import com.asyncexcel.sample.excel.UserExportHandler;
+import com.asyncexcel.sample.excel.UserExportHandlerA;
 import com.asyncexcel.sample.excel.UserExportModel;
 import com.asyncexcel.sample.excel.UserImportHandler;
 import com.asyncexcel.sample.excel.UserImportModel;
@@ -43,14 +44,13 @@ public class UserController {
         return taskId;
     }
     
-    //导出最简示例
+    //导出最简示例,支持多个sheet导出
     @PostMapping("/exports")
     public Long exports(){
         DataExportParam dataExportParam=new DataExportParam()
             .setExportFileName("用户导出")
-            .setLimit(5)
-            .setHeadClass(UserExportModel.class);
-        return excelService.doExport(UserExportHandler.class,dataExportParam);
+            .setLimit(5);
+        return excelService.doExport(dataExportParam,UserExportHandler.class, UserExportHandlerA.class);
     }
     
 }
