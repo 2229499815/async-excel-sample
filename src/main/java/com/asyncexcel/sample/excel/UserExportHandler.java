@@ -2,6 +2,7 @@ package com.asyncexcel.sample.excel;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.write.metadata.WriteSheet;
+import com.asyncexcel.core.DataParam;
 import com.asyncexcel.core.ExcelContext;
 import com.asyncexcel.core.ExportPage;
 import com.asyncexcel.core.annotation.ExcelHandle;
@@ -28,7 +29,7 @@ public class UserExportHandler implements ExportHandler<UserExportModel> {
     IUserService userService;
     
     @Override
-    public void init(ExcelContext ctx) {
+    public void init(ExcelContext ctx, DataParam param) {
         ExportContext context = (ExportContext) ctx;
         //此处的sheetNo会被覆盖，为了兼容一个文件多sheet导出
         WriteSheet sheet = EasyExcel.writerSheet(0, "第一个sheet").head(UserExportModel.class).build();
