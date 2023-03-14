@@ -48,4 +48,19 @@ public class UserExportHandler implements ExportHandler<UserExportModel> {
         result.setRecords(list);
         return result;
     }
+    
+    @Override
+    public void beforePerPage(ExportContext ctx, DataExportParam param) {
+        //分页执行，每页开始执行前
+    }
+    
+    @Override
+    public void afterPerPage(List<UserExportModel> list, ExportContext ctx, DataExportParam param) {
+        //分页执行，每页执行完成后
+    }
+    
+    @Override
+    public void callBack(ExcelContext ctx, DataParam param) {
+        //全部执行完成后回调
+    }
 }

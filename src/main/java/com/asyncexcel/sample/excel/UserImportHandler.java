@@ -1,8 +1,13 @@
 package com.asyncexcel.sample.excel;
 
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.read.metadata.ReadSheet;
+import com.asyncexcel.core.DataParam;
 import com.asyncexcel.core.ErrorMsg;
+import com.asyncexcel.core.ExcelContext;
 import com.asyncexcel.core.annotation.ExcelHandle;
 import com.asyncexcel.core.importer.DataImportParam;
+import com.asyncexcel.core.importer.ImportContext;
 import com.asyncexcel.core.importer.ImportHandler;
 import com.asyncexcel.sample.entity.User;
 import com.asyncexcel.sample.service.IUserService;
@@ -21,7 +26,14 @@ public class UserImportHandler implements ImportHandler<UserImportModel> {
     
     @Autowired
     IUserService userService;
-    
+
+    @Override
+    public void init(ExcelContext ctx, DataParam param) {
+        ReadSheet readSheet= EasyExcel.readSheet().sheetNo(0).headRowNumber(2).build();
+        ImportContext impCtx=(ImportContext) ctx;
+        impCtx.setReadSheet(readSheet);
+    }
+
     @Override
     public List<ErrorMsg> importData(List<UserImportModel> list, DataImportParam dataImportParam)
         throws Exception {
